@@ -1,0 +1,45 @@
+<template name="productsList">
+
+  {{#contentFor "headerButtonLeft"}}
+    <button class="button button-clear pull-left button-positive" data-ion-modal="search">
+      {{> ionIcon icon='ios-search'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerButtonRight"}}
+    <button class="button button-clear pull-right button-positive" data-ion-modal="newProduct">
+      {{> ionIcon icon='ios-plus-empty'}}
+    </button>
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <h1 class="title">Products</h1>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList}}
+        {{#each products}}
+          {{> _productItem product=this path="products.show"}}
+        {{/each}}
+      {{/ionList}}
+    {{/ionContent}}
+  {{/ionView}}
+
+</template>
+
+<template name="_productItem">
+  {{#with product}}
+    {{#ionItem path=../path iconLeft=true iconRight=true}}
+      
+      <h2>{{name}}</h2>
+      <p>
+        {{tagline}}
+      </p>
+      <span class="comments-count">
+        10        
+        {{> ionIcon icon="ios-chatbubble" }}
+      </span>
+    {{/ionItem}}
+  {{/with}}
+</template>
